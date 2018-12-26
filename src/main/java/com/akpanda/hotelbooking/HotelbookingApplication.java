@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableAutoConfiguration
 @EnableJpaRepositories("com.akpanda.hotelbooking.service")
 @EntityScan("com.akpanda.hotelbooking.model")
-public class HotelbookingApplication implements CommandLineRunner {
+public class HotelbookingApplication {
 
     private static Logger log = LoggerFactory.getLogger(HotelbookingApplication.class);
 
@@ -26,11 +26,6 @@ public class HotelbookingApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication.run(HotelbookingApplication.class, args);
         log.info("Hotel Booking start");
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-        hotelDao.findAllHotels();
     }
 }
 

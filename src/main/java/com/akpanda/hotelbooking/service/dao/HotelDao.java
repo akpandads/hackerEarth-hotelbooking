@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.sql.DataSource;
+import java.util.List;
 
 @Service
 public class HotelDao {
@@ -20,11 +21,13 @@ public class HotelDao {
     @Autowired
     HotelRepository hotelRepository;
 
-    public void findAllHotels(){
-        Iterable<Hotel> hotels = hotelRepository.findAll();
-        for(Hotel hotel:hotels){
-            logger.info(hotel.getHotelName());
-        }
+    public List<Hotel> findAllHotels(){
+        List<Hotel> hotels = hotelRepository.findAll();
+        return hotels;
+    }
+
+    public List<Hotel> findHotelByName(String hotelName){
+        return hotelRepository.findAllByHotelNameContaining(hotelName);
     }
 
 }
